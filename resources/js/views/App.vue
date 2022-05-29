@@ -1,17 +1,19 @@
 <template>
-    <div class="container">
-        <h1 class="text-center fw-bold m-4">Posts List</h1>
-        <PostList/>
+    <div>
+        <Header/>
+        <Main/>
     </div>
 </template>
 
 <script>
-import PostList from "../components/PostList.vue";
+import Header from "../components/Header.vue";
+import Main from "../components/Main.vue";
 
 export default {
     name: 'App',
     components: {
-        PostList,
+        Header,
+        Main,
     },
 }
 </script>
