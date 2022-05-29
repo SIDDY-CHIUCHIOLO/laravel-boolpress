@@ -1958,6 +1958,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'HeaderIndex'
 });
@@ -2110,6 +2115,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostListIndex',
@@ -2118,7 +2143,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      pagination: {}
     };
   },
   methods: {
@@ -2128,13 +2154,20 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("http://localhost:8000/api/posts?page=".concat(page)).then(function (result) {
         console.log(result.data.data);
         _this.posts = result.data.data;
+        var _result$data = result.data,
+            current_page = _result$data.current_page,
+            last_page = _result$data.last_page;
+        _this.pagination = {
+          currentPage: current_page,
+          lastPage: last_page
+        };
       })["catch"](function (error) {
         console.warn(error);
       });
     }
   },
   mounted: function mounted() {
-    this.getPosts();
+    this.getPosts(1);
   }
 });
 
@@ -3446,6 +3479,21 @@ var staticRenderFns = [
           ),
         ]),
       ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item" }, [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link",
+            attrs: { href: "/admin/posts", role: "button" },
+          },
+          [
+            _vm._v(
+              "\n                                        Posts-Admin\n                                    "
+            ),
+          ]
+        ),
+      ]),
     ])
   },
 ]
@@ -3659,10 +3707,75 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "row  justify-content-center" },
-    _vm._l(_vm.posts, function (post, index) {
-      return _c("Post", { key: index, attrs: { post: post } })
-    }),
-    1
+    [
+      _vm._l(_vm.posts, function (post, index) {
+        return _c("Post", { key: index, attrs: { post: post } })
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12" }, [
+        _c(
+          "nav",
+          {
+            staticClass: "my-3 d-flex justify-content-center",
+            attrs: { "aria-label": "Page navigation" },
+          },
+          [
+            _c("ul", { staticClass: "pagination" }, [
+              _vm.pagination.currentPage > 1
+                ? _c(
+                    "li",
+                    {
+                      staticClass: "page-item",
+                      on: {
+                        click: function ($event) {
+                          return _vm.getPosts(_vm.pagination.currentPage - 1)
+                        },
+                      },
+                    },
+                    [
+                      _c(
+                        "a",
+                        { staticClass: "page-link", attrs: { type: "submit" } },
+                        [_vm._v("Previous")]
+                      ),
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("li", { staticClass: "page-item" }, [
+                _c(
+                  "a",
+                  { staticClass: "page-link", attrs: { type: "submit" } },
+                  [_vm._v(_vm._s(_vm.pagination.currentPage))]
+                ),
+              ]),
+              _vm._v(" "),
+              _vm.pagination.currentPage < _vm.pagination.lastPage
+                ? _c(
+                    "li",
+                    {
+                      staticClass: "page-item",
+                      on: {
+                        click: function ($event) {
+                          return _vm.getPosts(_vm.pagination.currentPage + 1)
+                        },
+                      },
+                    },
+                    [
+                      _c(
+                        "a",
+                        { staticClass: "page-link", attrs: { type: "submit" } },
+                        [_vm._v("Next")]
+                      ),
+                    ]
+                  )
+                : _vm._e(),
+            ]),
+          ]
+        ),
+      ]),
+    ],
+    2
   )
 }
 var staticRenderFns = []

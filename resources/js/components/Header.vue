@@ -38,6 +38,11 @@
                                             Login
                                         </a>
                                     </li>
+                                    <li  class="nav-item">
+                                        <a class="nav-link" href="/admin/posts" role="button">
+                                            Posts-Admin
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
