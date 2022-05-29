@@ -12,24 +12,7 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body>
-        <div id="guest-home-container">
-            <div class="flex-center position-ref">
-                @if (Route::has('login'))
-                    <div class="top-right links">
-                        @auth
-                            <a href="{{ route('admin.home') }}">Home</a>
-                            <a href="{{ route('admin.posts.index') }}">Posts</a>
-                        @else
-                            <a href="{{ route('login') }}">Login</a>
-
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}">Register</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
-            </div>
-        </div>
+        
 
         <div id="root"></div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -39,11 +40,21 @@ class PostController extends Controller
     {
         $data = $request->all();
         $newPost = new Post();
+        $request->validate([
+                'title' => 'required|min:3|max:255',
+                'author' => 'required|min:3|max:255',
+                'content' => 'required|min:3|max:255',
+                'image_url' => 'required|min:3',
+            ],
+            [
+                "required" => "Non puoi inserire un post senza :attribute.",
+            ]
+        );
         $newPost->title = $data['title'];
         $newPost->author = $data ['author'];
         $newPost->content = $data['content'];
         $newPost->image_url = $data['image_url'];
-        $newPost->slug = $data['slug'];
+        $newPost->slug = Str::slug($data['title'], '-');
         $newPost->save();
 
         return redirect()->route('admin.posts.index', $newPost)->with('message', 'Il nuovo post ' . $newPost->title . ' è stato aggiunto');
@@ -80,12 +91,24 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+
+        $request->validate([
+                'title' => 'required|min:3|max:255',
+                'author' => 'required|min:3|max:255',
+                'content' => 'required|min:3',
+                'image_url' => 'required|min:3|max:255',
+            ],
+            [
+                "required" => "Non puoi inserire un post senza :attribute.",
+            ]
+        );
+
         $data = $request->all();
         $post->title = $data['title'];
         $post->author = $data ['author'];
         $post->content = $data['content'];
         $post->image_url = $data['image_url'];
-        $post->slug = $data['slug'];
+        $post->slug = Str::slug( $post->title, '-');
         $post->save();
 
         return redirect()->route('admin.posts.index', $post)->with('message', $post->title .' è stato modificato correttamente');
