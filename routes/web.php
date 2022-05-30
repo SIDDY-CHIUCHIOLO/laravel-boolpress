@@ -17,4 +17,8 @@ Route::middleware('auth')
     Route::resource('posts', 'PostController');
 });
 
+Route::get('/contacts', 'Guest\ContactsController@contact')->name('guest.contact');
+Route::post('/contacts', 'Guest\ContactsController@contactEmailStore')->name('guest.contactEmailStore');
+Route::get('/thanks', 'Guest\ContactsController@thanks')->name('guest.thanks');
+
 Route::get('/{any}', 'Guest\HomeController@index')->where('any','.*');
