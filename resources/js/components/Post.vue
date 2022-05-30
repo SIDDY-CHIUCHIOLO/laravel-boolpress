@@ -2,7 +2,7 @@
     <div class="card mb-3 col-5 me-3">
         <div class="row">
             <div class="col-md-4">
-            <img :src="post.image_url" class="img-fluid rounded-start" :alt="post.title">
+                <img :src="post.image_url" class="img-fluid rounded-start" :alt="post.title">
             </div>
             <div class="col-md-8">
             <div class="card-body">

@@ -8,7 +8,7 @@
             </div>
 
             <div class="col-6">
-                <form class="border border-3 border-primary rounded p-3 bg-info" action="{{route('admin.posts.store')}}" method="POST">
+                <form class="border border-3 border-primary rounded p-3 bg-info" action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-3">
@@ -46,7 +46,7 @@
                     
                     <div class="mb-3">
                         <label for="image_url" class="form-label">Inserisci l'url dell'immagine</label>
-                        <input type="text" name="image_url" id="image_url" class="form-control">
+                        <input type="file" name="image_url" id="image_url" class="form-control">
                         @error('image_url')
                             <div class="alert alert-danger">
                                 {{ $message }}

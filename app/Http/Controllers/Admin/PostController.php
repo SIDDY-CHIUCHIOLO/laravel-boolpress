@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Storage;
 class PostController extends Controller
 {
     /**
@@ -53,7 +53,7 @@ class PostController extends Controller
         $newPost->title = $data['title'];
         $newPost->author = $data ['author'];
         $newPost->content = $data['content'];
-        $newPost->image_url = $data['image_url'];
+        $newPost->image_url = Storage::put('uploads', $data['image_url']);
         $newPost->slug = Str::slug($data['title'], '-');
         $newPost->save();
 
