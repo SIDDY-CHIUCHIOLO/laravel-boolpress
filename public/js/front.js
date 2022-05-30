@@ -3399,22 +3399,7 @@ var render = function () {
                           1
                         ),
                         _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              { attrs: { to: { name: "contact" } } },
-                              [
-                                _c("a", { staticClass: "nav-link" }, [
-                                  _vm._v("Contacts"),
-                                ]),
-                              ]
-                            ),
-                          ],
-                          1
-                        ),
+                        _vm._m(1),
                         _vm._v(" "),
                         _c(
                           "li",
@@ -3435,7 +3420,7 @@ var render = function () {
                       ]
                     ),
                     _vm._v(" "),
-                    _vm._m(1),
+                    _vm._m(2),
                   ]
                 ),
               ]
@@ -3466,6 +3451,25 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item" }, [
+      _c(
+        "a",
+        {
+          staticClass: "nav-link",
+          attrs: { href: "/contacts", role: "button" },
+        },
+        [
+          _vm._v(
+            "\n                                        Contacts\n                                    "
+          ),
+        ]
+      ),
+    ])
   },
   function () {
     var _vm = this

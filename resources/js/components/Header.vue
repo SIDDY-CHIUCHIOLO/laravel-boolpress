@@ -22,9 +22,9 @@
                                         </router-link>
                                     </li>
                                     <li class="nav-item">
-                                        <router-link :to="{ name: 'contact'}">
-                                            <a class="nav-link">Contacts</a>
-                                        </router-link>
+                                        <a class="nav-link" href="/contacts" role="button">
+                                            Contacts
+                                        </a>
                                     </li>
                                     <li class="nav-item">
                                         <router-link :to="{ name: 'about-us'}">
